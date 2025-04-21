@@ -27,7 +27,8 @@ function getQueryParam(param) {
 }
 
 // Base64 Encoded Default Stream URL
-const encodedUrl = "";
+const encodedUrl = "aHR0cDovLzMudGVhbS5nYS9jaDE5ODgvbW9uby5tM3U4P3Rva2VuPW1rb3lhbjAxLmdnZ3Z1UWIwX1BTNThabUh5Y1Vkc2JOMGJCU1NodEJfS0NiejBCbHNqN2Y1NjBYNWZnZkpHRE50TlhpX2JDQ1hC
+  ";
 
 // Decode the Base64-encoded URL, or use the `file` query parameter if available
 const streamUrl = getQueryParam("file") || atob(encodedUrl);
