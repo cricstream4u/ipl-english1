@@ -9,7 +9,7 @@ document.addEventListener("keydown", function(e) {
   }
 });
 
-(function() {
+(function () {
   const detect = new Image();
   Object.defineProperty(detect, 'id', {
     get: function () {
@@ -26,14 +26,13 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-// Base64 Encoded Default Stream URL
-const encodedUrl = "aHR0cDovLzMudGVhbS5nYS9jaDE5ODgvbW9uby5tM3U4P3Rva2VuPW1rb3lhbjAxLmdnZ3Z1UWIwX1BTNThabUh5Y1Vkc2JOMGJCU1NodEJfS0NiejBCbHNqN2Y1NjBYNWZnZkpHRE50TlhpX2JDQ1hC
-  ";
+// Default HLS Stream URL (Plain Text)
+const defaultStreamUrl = "http://3.team.ga/ch1988/mono.m3u8?token=mkoyan01.gggvuQb0_PS58ZmHycUdsbN0bBSShtB_KCbzBlsj7f560X5fgfJGDNtNXi_bCCXB";
 
-// Decode the Base64-encoded URL, or use the `file` query parameter if available
-const streamUrl = getQueryParam("file") || atob(encodedUrl);
+// Use query parameter if provided, otherwise use default
+const streamUrl = getQueryParam("file") || defaultStreamUrl;
 
-// Check if URL is decoded properly
+// Check if URL is valid
 if (streamUrl && streamUrl.startsWith("http")) {
   // JWPlayer setup
   jwplayer("jwplayerDiv").setup({
@@ -47,6 +46,5 @@ if (streamUrl && streamUrl.startsWith("http")) {
     cast: { appid: "CC1AD845" }
   });
 } else {
-  // If URL decoding fails, show an error
   document.body.innerHTML = "Invalid stream URL.";
 }
